@@ -1,4 +1,4 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.model;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.models;
 
 import jakarta.persistence.*;
 import java.util.Objects;
@@ -22,7 +22,7 @@ public class Address {
     @Column(name = "APARTMENT")
     private String apartment;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.EAGER)
     private Client client;
 
     public Address() {
