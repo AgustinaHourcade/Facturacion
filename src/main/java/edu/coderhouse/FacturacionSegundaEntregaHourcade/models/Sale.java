@@ -1,5 +1,6 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.model;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,12 +16,11 @@ public class Sale {
     private double total;
     @Column(name = "DATE")
     private LocalDate date;
-    @Column(name = "QUANTITY")
-    private int quantity;
-
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "CLIENT_ID")
+    @JsonIgnore
     private Client client;
+
 
     @OneToMany (mappedBy = "sale", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<SaleXproduct> saleXproduct;
@@ -28,11 +28,10 @@ public class Sale {
     public Sale() {
     }
 
-    public Sale(Long id, double total, LocalDate date, int quantity, Client client, List<SaleXproduct> saleXproduct) {
+    public Sale(Long id, double total, LocalDate date, Client client, List<SaleXproduct> saleXproduct) {
         this.id = id;
         this.total = total;
         this.date = date;
-        this.quantity = quantity;
         this.client = client;
         this.saleXproduct = saleXproduct;
     }
@@ -61,13 +60,6 @@ public class Sale {
         this.date = date;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public Client getClient() {
         return client;
@@ -90,12 +82,12 @@ public class Sale {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sale sale = (Sale) o;
-        return id == sale.id && Double.compare(total, sale.total) == 0 && quantity == sale.quantity && Objects.equals(date, sale.date) && Objects.equals(client, sale.client) && Objects.equals(saleXproduct, sale.saleXproduct);
+        return id == sale.id && Double.compare(total, sale.total) == 0  && Objects.equals(date, sale.date) && Objects.equals(client, sale.client) && Objects.equals(saleXproduct, sale.saleXproduct);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, total, date, quantity, client, saleXproduct);
+        return Objects.hash(id, total, date, client, saleXproduct);
     }
 
     @Override
@@ -104,7 +96,6 @@ public class Sale {
                 "id=" + id +
                 ", total=" + total +
                 ", date=" + date +
-                ", quantity=" + quantity +
                 ", client=" + client +
                 ", saleXproduct=" + saleXproduct +
                 '}';

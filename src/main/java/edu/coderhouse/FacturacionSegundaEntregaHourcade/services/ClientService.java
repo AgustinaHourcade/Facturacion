@@ -1,7 +1,7 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.service;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.services;
 
-import edu.coderhouse.FacturacionSegundaEntregaHourcade.model.Client;
-import edu.coderhouse.FacturacionSegundaEntregaHourcade.repository.ClientRepository;
+import edu.coderhouse.FacturacionSegundaEntregaHourcade.models.Client;
+import edu.coderhouse.FacturacionSegundaEntregaHourcade.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +24,11 @@ public class ClientService {
 
     public List<Client> getAllClients(){
         return clientRepository.findAll();
+    }
+
+    public void deleteClient(Long id){
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente #: " + id + "no encontrado"));
+        clientRepository.delete(client);
     }
 }

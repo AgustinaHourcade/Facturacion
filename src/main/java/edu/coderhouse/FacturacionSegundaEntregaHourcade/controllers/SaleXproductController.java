@@ -1,7 +1,7 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.controller;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.controllers;
 
-import edu.coderhouse.FacturacionSegundaEntregaHourcade.model.SaleXproduct;
-import edu.coderhouse.FacturacionSegundaEntregaHourcade.service.SaleXproductService;
+import edu.coderhouse.FacturacionSegundaEntregaHourcade.models.SaleXproduct;
+import edu.coderhouse.FacturacionSegundaEntregaHourcade.services.SaleXproductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

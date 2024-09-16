@@ -1,5 +1,6 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.model;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public class Client {
     private List<Address> address;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Sale> sales;
 
     public Client() {

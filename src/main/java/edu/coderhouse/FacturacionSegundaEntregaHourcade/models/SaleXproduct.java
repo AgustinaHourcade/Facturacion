@@ -1,5 +1,6 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.model;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class SaleXproduct {
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn (name = "SALE_ID")
+    @JsonIgnore
     private Sale sale;
 
     @ManyToOne (fetch = FetchType.EAGER)

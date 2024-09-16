@@ -1,4 +1,4 @@
-package edu.coderhouse.FacturacionSegundaEntregaHourcade.model;
+package edu.coderhouse.FacturacionSegundaEntregaHourcade.models;
 
 import jakarta.persistence.*;
 
